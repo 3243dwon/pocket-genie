@@ -1,16 +1,16 @@
 {
-  "name": "pocket-diorama",
+  "name": "pocket-lantern",
   "owner": {
     "name": "3243dwon",
     "url": "https://github.com/3243dwon"
   },
   "metadata": {
-    "description": "Pocket Diorama: a skill that turns any itinerary into a calm, glanceable, in-the-moment trip companion web app.",
+    "description": "Pocket Lantern: a skill that turns any itinerary into a calm, glanceable, in-the-moment trip companion web app.",
     "version": "1.0.0"
   },
   "plugins": [
     {
-      "name": "pocket-diorama",
+      "name": "pocket-lantern",
       "source": "./",
       "description": "Turn any itinerary into a calm, glanceable, in-the-moment trip companion: a single-file mobile web app with a live Now/Next hero, flexible timeline, failure plans and honest verified-vs-unverified facts.",
       "version": "1.0.0",
@@ -18,7 +18,7 @@
       "category": "travel",
       "tags": ["travel", "itinerary", "trip", "companion", "mobile", "web-app", "city-guide"],
       "license": "MIT",
-      "homepage": "https://github.com/3243dwon/pocket-diorama"
+      "homepage": "https://github.com/3243dwon/pocket-lantern"
     }
   ]
 }

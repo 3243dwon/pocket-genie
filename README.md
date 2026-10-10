@@ -1,8 +1,8 @@
-# 🧭 Pocket Diorama
+# 🏮 Pocket Lantern
 
 > Turn any itinerary into a calm, glanceable trip companion that fits in your pocket - so you can stop worrying about the day and look up at the city.
 
-A map gives you routes. It does not tell you what the street will feel like, what to do when the train is cancelled, or which door is the real hotel entrance. **Pocket Diorama** is a Claude skill that builds the missing layer: a single-file mobile web page where your bookings and plans become a narrated, live miniature of the day.
+A map gives you routes. It does not tell you what the street will feel like, what to do when the train is cancelled, or which door is the real hotel entrance. **Pocket Lantern** is a Claude skill that builds the missing layer: a single-file mobile web page where your bookings and plans become a narrated, live miniature of the day.
 
 <table>
   <tr>
@@ -27,16 +27,16 @@ A map gives you routes. It does not tell you what the street will feel like, wha
 As a Claude Code plugin marketplace:
 
 ```
-/plugin marketplace add 3243dwon/pocket-diorama
-/plugin install pocket-diorama@pocket-diorama
+/plugin marketplace add 3243dwon/pocket-lantern
+/plugin install pocket-lantern@pocket-lantern
 ```
 
 Or copy the single skill file into your own skills folder:
 
 ```bash
-mkdir -p ~/.claude/skills/pocket-diorama
-curl -fsSL https://raw.githubusercontent.com/3243dwon/pocket-diorama/main/skills/pocket-diorama/SKILL.md \
-  -o ~/.claude/skills/pocket-diorama/SKILL.md
+mkdir -p ~/.claude/skills/pocket-lantern
+curl -fsSL https://raw.githubusercontent.com/3243dwon/pocket-lantern/main/skills/pocket-lantern/SKILL.md \
+  -o ~/.claude/skills/pocket-lantern/SKILL.md
 ```
 
 ## Use it

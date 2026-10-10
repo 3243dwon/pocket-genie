@@ -1,11 +1,11 @@
 ---
-name: pocket-diorama
-description: Turn any itinerary, booking list or rough travel plan into a calm, glanceable, in-the-moment trip companion - a single-file mobile web app (a "Pocket Diorama") with a live Now/Next hero, a timeline that only puts a clock on the things that are truly booked, a failure plan for every stop, show-the-driver address cards, and honest verified-versus-unverified facts. Built to reduce travel anxiety, not to list attractions. Use this skill whenever the user wants a trip app, travel companion, day-of itinerary page, "what do I do right now" guide, a city guide for one specific trip, or wants to turn a plan, emails or bookings into a phone-friendly page - even if they never say "app" or "diorama" and only say things like "make my trip plan usable on my phone", "I'm nervous about landing in a new city", "make a one-day itinerary I can follow", or "turn these bookings into a timeline".
+name: pocket-lantern
+description: Turn any itinerary, booking list or rough travel plan into a calm, glanceable, in-the-moment trip companion - a single-file mobile web app (a "Pocket Lantern") with a live Now/Next hero, a timeline that only puts a clock on the things that are truly booked, a failure plan for every stop, show-the-driver address cards, and honest verified-versus-unverified facts. Built to reduce travel anxiety, not to list attractions. Use this skill whenever the user wants a trip app, travel companion, day-of itinerary page, "what do I do right now" guide, a city guide for one specific trip, or wants to turn a plan, emails or bookings into a phone-friendly page - even if they never say "app" or "lantern" and only say things like "make my trip plan usable on my phone", "I'm nervous about landing in a new city", "make a one-day itinerary I can follow", or "turn these bookings into a timeline".
 ---
 
-# Pocket Diorama
+# Pocket Lantern
 
-A map gives you routes. It does not tell you what the street will feel like, what to do when the train is cancelled, or which door is the real hotel entrance. A Pocket Diorama is the missing layer: one phone-sized page where an itinerary becomes a narrated, glanceable miniature of the day, so the traveler can stop worrying and look up at the city.
+A map gives you routes. It does not tell you what the street will feel like, what to do when the train is cancelled, or which door is the real hotel entrance. A Pocket Lantern is the missing layer: one phone-sized page that lights up the next few steps of the day, so the traveler can stop worrying and look up at the city.
 
 The product is **editorial judgment plus calm structure**. It is not 3D, not a booking engine, not a list of "top 10 things to do". If the page would read the same for any visitor, it has failed; it should read like a well-informed friend wrote it for this person on this day.
 
@@ -99,7 +99,7 @@ Optional sections (add as `panels` or custom blocks) are listed under *Utility m
 - **`sub` is two sentences at most.** Bold the one fact the eye should catch. Put everything else in `more`.
 - **Lead with the decision, then the reason.** "Take the metro, not a taxi: 20 minutes, covered, 1.60 EUR." Not a paragraph of options.
 - **Name what a stranger would miss.** The entrance that is not on the street, the floor the reception is on, the turnstile that needs a ticket to exit.
-- **Sensory and landmark cues** make unfamiliar streets feel known: "the stone glows amber under the streetlights", "past the 16th-century arch on your left".
+- **Sensory and landmark cues** make unfamiliar streets feel known: "the stone glows amber under the streetlights", "past the old clock tower on your left".
 - **Say what to skip.** One line on the overrated queue or tourist-priced option saves more anxiety than three recommendations.
 - **Soft times only with a reason.** `~16:30` plus why ("shade after 17:00").
 - **Taste is data.** Record the traveler's taste profile once and let it steer the "nearby" derivatives. A shared motif (a favorite emoji, a recurring treat) can be a small signature if the user wants one.
@@ -206,7 +206,7 @@ A complete working page: Paper Pastel theme, live Now/Next hero, time-travel tes
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#FCF7F1">
 <link rel="icon" href="data:,">
-<title>Pocket Diorama - Sample City</title>
+<title>Pocket Lantern - Sample City</title>
 <style>
 :root{--paper:#FCF7F1;--card:#fff;--ink:#4B443E;--soft:#948578;--faint:#C6BAAD;--line:#F0E7DA;
 --blush:#FBE4E6;--blush-d:#C1717F;--mint:#E1F0E7;--mint-d:#5E9B7C;--butter:#FBEFD2;--butter-d:#AE873A;
@@ -239,7 +239,7 @@ details{margin-top:8px}summary{cursor:pointer;color:var(--soft);font-size:13px;m
 </style>
 </head>
 <body>
-<header><div class="wm">Pocket Diorama<small id="city"></small></div><div id="clock">--:--</div></header>
+<header><div class="wm">Pocket Lantern<small id="city"></small></div><div id="clock">--:--</div></header>
 <div class="wrap">
   <div class="hero"><div class="lab" id="hl"></div><div class="big" id="hb"></div><div class="hsub" id="hs"></div><div class="hfix" id="hf"></div></div>
   <nav class="quick" id="quick"></nav>
@@ -300,7 +300,7 @@ function nowMin() {
 }
 
 const EVENTS = DATA.days.flatMap(d => d.timeline.map(e => { const s = dayMin(d.date) + toMin(e.time); return { ...e, abs: s, end: s + (e.dur || 30) }; }));
-const KEY = "pd-done-v1";
+const KEY = "pl-done-v1";
 const getDone = () => { try { return new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch { return new Set(); } };
 const setDone = s => { try { localStorage.setItem(KEY, JSON.stringify([...s])); } catch {} };
 
@@ -368,7 +368,7 @@ Any static host works (drag-and-drop hosting, GitHub Pages, a CDN bucket). Add a
 **Offline reloads.** A plain HTML file will not reload without a signal unless something caches it. Add this `sw.js` next to `index.html` and register it with one line at the end of the page script: `if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");`. It is network-first, so edits always show up when online, and it falls back to the cached copy when offline. Service workers need HTTPS (or localhost), which every common static host provides. Tested: with the network switched off, the page reloaded and rendered.
 
 ```js
-const C = "pd-v1";
+const C = "pl-v1";
 self.addEventListener("install", e => { self.skipWaiting(); e.waitUntil(caches.open(C).then(c => c.addAll(["./", "./index.html"]))); });
 self.addEventListener("activate", e => e.waitUntil(self.clients.claim()));
 self.addEventListener("fetch", e => e.respondWith(
