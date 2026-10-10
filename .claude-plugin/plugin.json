@@ -1,13 +1,13 @@
 {
-  "name": "pocket-lantern",
+  "name": "pocket-genie",
   "version": "1.0.0",
   "description": "Turn any itinerary into a calm, glanceable, in-the-moment trip companion: a single-file mobile web app with a live Now/Next hero, flexible timeline, failure plans and honest verified-vs-unverified facts.",
   "author": {
     "name": "3243dwon",
     "url": "https://github.com/3243dwon"
   },
-  "homepage": "https://github.com/3243dwon/pocket-lantern",
-  "repository": "https://github.com/3243dwon/pocket-lantern",
+  "homepage": "https://github.com/3243dwon/pocket-genie",
+  "repository": "https://github.com/3243dwon/pocket-genie",
   "license": "MIT",
   "keywords": ["travel", "itinerary", "trip", "companion", "mobile", "web-app", "anxiety", "city-guide", "skill"]
 }

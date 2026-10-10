@@ -1,11 +1,11 @@
 ---
-name: pocket-lantern
-description: Turn any itinerary, booking list or rough travel plan into a calm, glanceable, in-the-moment trip companion - a single-file mobile web app (a "Pocket Lantern") with a live Now/Next hero, a timeline that only puts a clock on the things that are truly booked, a failure plan for every stop, show-the-driver address cards, and honest verified-versus-unverified facts. Built to reduce travel anxiety, not to list attractions. Use this skill whenever the user wants a trip app, travel companion, day-of itinerary page, "what do I do right now" guide, a city guide for one specific trip, or wants to turn a plan, emails or bookings into a phone-friendly page - even if they never say "app" or "lantern" and only say things like "make my trip plan usable on my phone", "I'm nervous about landing in a new city", "make a one-day itinerary I can follow", or "turn these bookings into a timeline".
+name: pocket-genie
+description: Turn any itinerary, booking list or rough travel plan into a calm, glanceable, in-the-moment trip companion - a single-file mobile web app (a "Pocket 神灯", a pocket genie lamp) with a live Now/Next hero, a timeline that only puts a clock on the things that are truly booked, a failure plan for every stop, show-the-driver address cards, and honest verified-versus-unverified facts. Built to reduce travel anxiety, not to list attractions. Use this skill whenever the user wants a trip app, travel companion, day-of itinerary page, "what do I do right now" guide, a city guide for one specific trip, or wants to turn a plan, emails or bookings into a phone-friendly page - even if they never say "app" or "genie" and only say things like "make my trip plan usable on my phone", "I'm nervous about landing in a new city", "make a one-day itinerary I can follow", or "turn these bookings into a timeline".
 ---
 
-# Pocket Lantern
+# Pocket 神灯 (pocket-genie)
 
-A map gives you routes. It does not tell you what the street will feel like, what to do when the train is cancelled, or which door is the real hotel entrance. A Pocket Lantern is the missing layer: one phone-sized page that lights up the next few steps of the day, so the traveler can stop worrying and look up at the city.
+A map gives you routes. It does not tell you what the street will feel like, what to do when the train is cancelled, or which door is the real hotel entrance. A Pocket 神灯 (a pocket genie lamp) is the missing layer: one phone-sized page you can ask at any moment - where am I, what is next, what if it goes wrong - and always get a calm answer, so the traveler can stop worrying and look up at the city.
 
 The product is **editorial judgment plus calm structure**. It is not 3D, not a booking engine, not a list of "top 10 things to do". If the page would read the same for any visitor, it has failed; it should read like a well-informed friend wrote it for this person on this day.
 
@@ -206,7 +206,7 @@ A complete working page: Paper Pastel theme, live Now/Next hero, time-travel tes
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#FCF7F1">
 <link rel="icon" href="data:,">
-<title>Pocket Lantern - Sample City</title>
+<title>Pocket 神灯 - Sample City</title>
 <style>
 :root{--paper:#FCF7F1;--card:#fff;--ink:#4B443E;--soft:#948578;--faint:#C6BAAD;--line:#F0E7DA;
 --blush:#FBE4E6;--blush-d:#C1717F;--mint:#E1F0E7;--mint-d:#5E9B7C;--butter:#FBEFD2;--butter-d:#AE873A;
@@ -239,7 +239,7 @@ details{margin-top:8px}summary{cursor:pointer;color:var(--soft);font-size:13px;m
 </style>
 </head>
 <body>
-<header><div class="wm">Pocket Lantern<small id="city"></small></div><div id="clock">--:--</div></header>
+<header><div class="wm">Pocket 神灯<small id="city"></small></div><div id="clock">--:--</div></header>
 <div class="wrap">
   <div class="hero"><div class="lab" id="hl"></div><div class="big" id="hb"></div><div class="hsub" id="hs"></div><div class="hfix" id="hf"></div></div>
   <nav class="quick" id="quick"></nav>
@@ -300,7 +300,7 @@ function nowMin() {
 }
 
 const EVENTS = DATA.days.flatMap(d => d.timeline.map(e => { const s = dayMin(d.date) + toMin(e.time); return { ...e, abs: s, end: s + (e.dur || 30) }; }));
-const KEY = "pl-done-v1";
+const KEY = "pg-done-v1";
 const getDone = () => { try { return new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch { return new Set(); } };
 const setDone = s => { try { localStorage.setItem(KEY, JSON.stringify([...s])); } catch {} };
 
@@ -368,7 +368,7 @@ Any static host works (drag-and-drop hosting, GitHub Pages, a CDN bucket). Add a
 **Offline reloads.** A plain HTML file will not reload without a signal unless something caches it. Add this `sw.js` next to `index.html` and register it with one line at the end of the page script: `if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");`. It is network-first, so edits always show up when online, and it falls back to the cached copy when offline. Service workers need HTTPS (or localhost), which every common static host provides. Tested: with the network switched off, the page reloaded and rendered.
 
 ```js
-const C = "pl-v1";
+const C = "pg-v1";
 self.addEventListener("install", e => { self.skipWaiting(); e.waitUntil(caches.open(C).then(c => c.addAll(["./", "./index.html"]))); });
 self.addEventListener("activate", e => e.waitUntil(self.clients.claim()));
 self.addEventListener("fetch", e => e.respondWith(
